@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Cardo|Oswald&display=swap');
-#container {
+#lan-container {
     min-height: 100vh;
     background-image: url(https://cdn.pixabay.com/photo/2017/02/15/10/39/salad-2068220_1280.jpg);
     background-repeat: no-repeat;
@@ -8,26 +8,20 @@
     flex-direction: row;
     justify-content: flex-start;
 }
-#content-box {
+#lan-content-box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
     width: 500px;
     height: 400px;
-    margin-top: 90px;
-    margin-left: 90px;;
+    margin-top: 20vh;
+    margin-left: 20vh;;
     background-color: #A4240B;
     color: #C4B0B9;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
 }
-#content {
-  width: 400px;
-  height: 350px;
-  margin: 0 50px 50px 50px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-around;
-}
-#btn {
+#lan-btn {
   width: 175px;
   height: 50px;
   font-size: 20px;
@@ -38,14 +32,17 @@
   color: #C4B0B9;
   outline:none;
 }
-#btn:hover {
+#lan-btn:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 h1 {
   font-family: 'Oswald', sans-serif;
   font-size: 50px;
-  margin-bottom: -10px;
+  margin: -10px 0 -10px 0;
 }
 h2 {
   font-family: 'Cardo', serif;
+}
+hr {
+  width: 400px;
 }

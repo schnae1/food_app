@@ -14,12 +14,20 @@ class LogInPage extends React.Component {
                         <input class="log-in" type="password" name="userpassword" placeholder="Password" /><br />
                         <input class="log-in" id="log-btn" type="submit" name="Submit" value="LOG IN" />
                     </form>
-                    <Link to={ROUTES.PASSWORD_FORGOT}>Forgot Password?</Link>
+                    <ForgotPasswordLink />
                 </div>
-                <p>Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link></p>
+                <SignUpLink />
             </div>
         );
     }
 }
+
+const SignUpLink = () => (
+    <p>Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link></p>
+);
+
+const ForgotPasswordLink = () => (
+    <Link to={ROUTES.PASSWORD_FORGOT}>Forgot Password?</Link>
+);
 
 export default LogInPage;

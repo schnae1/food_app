@@ -33,7 +33,7 @@ class App extends React.Component {
 
     return (
       <Router>
-        <div class="App-container">
+        <div className="App-container">
           {nav}
 
           <Route exact path={ROUTES.LANDING} component={LandingPage} />

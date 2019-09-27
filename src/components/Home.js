@@ -11,7 +11,9 @@ class HomePage extends React.Component {
             total: 0,
             location: '',
             distance: '',
-            result: ''
+            result: '',
+            offset: 0,
+            page: 1
         };
         this.handleLocation = this.handleLocation.bind(this);
         this.handleDistance = this.handleDistance.bind(this);
@@ -37,13 +39,14 @@ class HomePage extends React.Component {
               location: this.state.location,
               radius: dist,
               categories: 'restaurants',
+              offset: this.state.offset
          }});
+
+        //console.log(resp);
 
         this.setState({ 
             result: resp, 
             loading: false, 
-            location: '', 
-            distance: '',
             total: resp.data.total
         });
          
@@ -74,13 +77,17 @@ class HomePage extends React.Component {
         } else {
             results = <Restaurants rest={this.state.result} />;
         }
+
         return (
             <div id="home-container">
                 <div id="header">
                     <h1>Foodies</h1>
-                    <input type="text" placeholder="Your Current Location" value={this.state.location} onChange={this.handleLocation} />
-                    <input type="text" placeholder="Search Radius in Miles" value={this.state.distance} onChange={this.handleDistance} />
-                    <button onClick={this.handleClick}>Find</button>
+                    <div id="user-input">
+                        <input type="text" placeholder="Your Current Location" value={this.state.location} onChange={this.handleLocation} />
+                        <input type="text" placeholder="Search Radius in Miles" value={this.state.distance} onChange={this.handleDistance} />
+                        <button onClick={this.handleClick}>Find</button>
+                    </div>
+                    
                 </div>
                 <div id="display-rest">
                     {results}
@@ -94,15 +101,18 @@ const Restaurants = (props) => {
     if(props.rest !== ''){
         const restaurants = props.rest.data.businesses;
         const displayItems = restaurants.map((rest) =>
-            <div key={rest.id} className="rest-card">
-                <p>{rest['name']}</p>
-            </div>
+            <a href={rest.url}>
+                <div key={rest.id} className="rest-card">
+                    <h3>{rest['name']}</h3>
+                    <img className="card-img" src={rest['image_url']} alt="Restaurant Image" />
+                </div>
+            </a>
         );
         return displayItems;
     } else {
         return (
             <div className="rest-card">
-                <h2>No Results</h2>
+                <h2>Search For Restaurants</h2>
             </div>
         );
     }

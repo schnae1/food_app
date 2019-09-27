@@ -12,7 +12,7 @@ class LandingPage extends React.Component {
                     <hr />
                     <h1>Foodies</h1>
                     <h2>Find new dinning experiences.</h2>
-                    <Link to={ROUTES.LOG_IN}><button id="lan-btn">Start Today</button></Link>
+                    <Link to={ROUTES.HOME}><button id="lan-btn">Start Today</button></Link>
                     <hr />
                 </div>
             </div>

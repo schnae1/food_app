@@ -1,8 +1,6 @@
 #home-container {
-    display: flex;
-    flex-direction: column;
     min-height: 100vh;
-    background-color: lightslategray;
+    background-color: #FFFAFF;
 }
 
 #header {
@@ -25,16 +23,52 @@
 }
 
 .rest-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 400px;
     width: 500px;
-    margin: 10px;
+    margin: 30px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
+
+.rest-card:hover {
+    transform: scale(1.05);
+}
+
 img {
-    height: 75%;
-    width: 75%;
+    max-height: 100%;
+    max-width: 100%;
  
 }
+a {
+    text-decoration: none;
+    color: black;
+}
 .card-img {
-    object-fit: scale-down;
+    object-fit: contain;
+    border-radius: 150px;
+}
+#img-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+}
+
+#pagebtngroup {
+    padding-bottom: 90px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#loading {
+    margin-top: 150px;
+}
+
+#nextbtn, #prevbtn {
+    margin: 0 30px;
 }

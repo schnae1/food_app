@@ -12,21 +12,30 @@ class HomePage extends React.Component {
             location: '',
             distance: '',
             result: '',
-            offset: 0,
-            page: 1
+            page: 0
         };
         this.handleLocation = this.handleLocation.bind(this);
         this.handleDistance = this.handleDistance.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handlePagination = this.handlePagination.bind(this);
     }
 
-    async getRestaurants() {
+    async getRestaurants(nextPage) {
 
+        let offset;
+        let pageNum = this.state.page;
         let dist = 0;
+
         if(this.state.distance >= 25){
             dist = 40000;
         } else {
             dist = this.state.distance * 1609;
+        }
+
+        if(!nextPage) {
+            offset = this.state.page - 2;
+        } else {
+            offset = this.state.page;
         }
 
 
@@ -39,17 +48,16 @@ class HomePage extends React.Component {
               location: this.state.location,
               radius: dist,
               categories: 'restaurants',
-              offset: this.state.offset
+              offset: (offset * 20)
          }});
-
-        //console.log(resp);
 
         this.setState({ 
             result: resp, 
             loading: false, 
-            total: resp.data.total
+            total: resp.data.total,
+            page: nextPage ? (pageNum + 1) : (pageNum - 1),
         });
-         
+
     }
 
     handleLocation(event) {
@@ -65,12 +73,27 @@ class HomePage extends React.Component {
     }
 
     handleClick() {
+        this.setState({ loading: true, page: 0 }, () => this.getRestaurants(true));
+    }
+
+    handlePagination(nextPage) {
         this.setState({ loading: true });
-        this.getRestaurants();
+        if(nextPage) {
+            this.getRestaurants(nextPage);
+        } else {
+            this.getRestaurants(false);
+        }
     }
 
     render() {
         let results;
+        let pagination;
+
+        if( !this.state.loading  && this.state.page > 0) {
+            pagination = <Pagination page={this.state.page} handleClick={this.handlePagination} total={this.state.total}/>;
+        } else {
+            pagination = null;
+        }
 
         if(this.state.loading){
             results = <Loading />;
@@ -92,6 +115,7 @@ class HomePage extends React.Component {
                 <div id="display-rest">
                     {results}
                 </div>
+                {pagination}
             </div>
         );
     }
@@ -101,10 +125,12 @@ const Restaurants = (props) => {
     if(props.rest !== ''){
         const restaurants = props.rest.data.businesses;
         const displayItems = restaurants.map((rest) =>
-            <a href={rest.url}>
-                <div key={rest.id} className="rest-card">
+            <a key={rest.id} href={rest.url}>
+                <div className="rest-card">
                     <h3>{rest['name']}</h3>
-                    <img className="card-img" src={rest['image_url']} alt="Restaurant Image" />
+                    <div id="img-box">
+                        <img className="card-img" src={rest['image_url']} alt="Restaurant Image" />
+                    </div>
                 </div>
             </a>
         );
@@ -121,7 +147,32 @@ const Restaurants = (props) => {
 
 const Loading = () => {
     return (
-        <ReactLoading type="spinningBubbles" color="blue" />
+        <ReactLoading id="loading" type="spinningBubbles" color="blue" height={'20%'} width={'20%'}/>
+    );
+}
+
+const Pagination = (props) => {
+    let prevbtn;
+    let nextbtn;
+
+    if(props.page > 1){
+        prevbtn = <button onClick={() => props.handleClick(false)} id="prevbtn">Previous</button>;
+    } else {
+        prevbtn = null;
+    }
+
+    if(props.total > props.page * 20) {
+        nextbtn = <button onClick={() => props.handleClick(true)} id="nextbtn">Next</button>;
+    } else {
+        nextbtn = null;
+    }
+
+    return (
+        <div id="pagebtngroup">
+            {prevbtn}
+            {nextbtn}
+        </div>
+        
     );
 }
 

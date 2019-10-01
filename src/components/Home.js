@@ -104,14 +104,14 @@ class HomePage extends React.Component {
         return (
             <div id="home-container">
                 <div id="header">
-                    <h1>Foodies</h1>
+                    <p id="title">Foodies</p>
                     <div id="user-input">
-                        <input type="text" placeholder="Your Current Location" value={this.state.location} onChange={this.handleLocation} />
-                        <input type="text" placeholder="Search Radius in Miles" value={this.state.distance} onChange={this.handleDistance} />
-                        <button onClick={this.handleClick}>Find</button>
-                    </div>
-                    
+                        <input className="input-box" type="text" placeholder="Your Current Location" value={this.state.location} onChange={this.handleLocation} />
+                        <input className="input-box" type="text" placeholder="Search Radius in Miles" value={this.state.distance} onChange={this.handleDistance} />
+                        <button id="find-button" onClick={this.handleClick}>Find</button>
+                    </div>   
                 </div>
+
                 <div id="display-rest">
                     {results}
                 </div>
@@ -137,9 +137,7 @@ const Restaurants = (props) => {
         return displayItems;
     } else {
         return (
-            <div className="rest-card">
-                <h2>Search For Restaurants</h2>
-            </div>
+            <h2 id="search-text">Search For Restaurants</h2>
         );
     }
     
@@ -147,7 +145,7 @@ const Restaurants = (props) => {
 
 const Loading = () => {
     return (
-        <ReactLoading id="loading" type="spinningBubbles" color="blue" height={'20%'} width={'20%'}/>
+        <ReactLoading id="loading" type="spinningBubbles" color="black" height={'10%'} width={'10%'}/>
     );
 }
 

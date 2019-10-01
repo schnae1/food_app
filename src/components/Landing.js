@@ -10,7 +10,7 @@ class LandingPage extends React.Component {
             <div id="lan-container">
                 <div id="lan-content-box">
                     <hr />
-                    <h1>Foodies</h1>
+                    <h1 id="site-title">Foodies</h1>
                     <h2>Find new dinning experiences.</h2>
                     <Link to={ROUTES.HOME}><button id="lan-btn">Start Today</button></Link>
                     <hr />

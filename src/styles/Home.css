@@ -148,6 +148,7 @@ a {
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
+        height: 85px;
     }
 
     #title {
@@ -155,27 +156,27 @@ a {
     }
 
     .input-box {
-        height: 15px;
-        font-size: 10px;
+        height: 25px;
+        font-size: 18px;
         border-radius: 10px;
         padding-left: 5px;
     }
     
     #find-button {
-        height: 17.5px;
-        width: 7%;
-        font-size: 10px;
+        height: 27px;
+        width: 9%;
+        font-size: 18px;
         border-radius: 5px;
         margin-right: 0;
     }
 
     #user-input {
-        margin-bottom: 0;
+        margin-bottom: 10px;
     }
 
     .rest-card {
-        height: 65vh;
-        width: 75vw;
+        height: 60vh;
+        width: 90vw;
         margin: 15px;
     }
 
@@ -191,4 +192,8 @@ a {
         font-size: 10px;
     }
 
+    #pagebtngroup {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
 }

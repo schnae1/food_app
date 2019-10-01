@@ -94,7 +94,7 @@ a {
     margin-top: 40px;
 }
 
-.card-img {
+.image-card {
     object-fit: contain;
     min-height: 100%;
     min-width: 100%;

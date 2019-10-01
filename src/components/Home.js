@@ -126,11 +126,11 @@ const Restaurants = (props) => {
     if(props.rest !== ''){
         const restaurants = props.rest.data.businesses;
         const displayItems = restaurants.map((rest) =>
-            <a key={rest.id} href={rest.url}>
+            <a key={rest.id} href={rest.url} rel="noopener noreferrer" target="_blank">
                 <div className="rest-card">
                     <h3 id="rest-title">{rest['name']}</h3>
                     <div id="img-box">
-                        <img className="card-img" src={rest['image_url']} alt="Restaurant Image" />
+                        <img className="image-card" src={rest['image_url']} alt="Restaurant Information" />
                     </div>
                 </div>
             </a>

@@ -47,6 +47,7 @@ class HomePage extends React.Component {
             params: {
               location: this.state.location,
               radius: dist,
+              term: 'unique restaurants',
               categories: 'restaurants',
               offset: (offset * 20)
          }});
@@ -137,7 +138,7 @@ const Restaurants = (props) => {
         return displayItems;
     } else {
         return (
-            <h2 id="search-text">Search For Restaurants</h2>
+            <h2 id="search-text">Search For Unique Restaurants</h2>
         );
     }
     

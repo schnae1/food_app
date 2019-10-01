@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Cardo|Oswald&display=swap');
 #lan-container {
     min-height: 100vh;
-    background-image: url(https://cdn.pixabay.com/photo/2017/02/15/10/39/salad-2068220_1280.jpg);
+    background-image: url("../images/food-2068217_1920.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -16,7 +16,7 @@
     width: 500px;
     height: 400px;
     margin-top: 20vh;
-    margin-left: 20vh;;
+    margin-left: 20vh;
     background-color: #A4240B;
     color: #C4B0B9;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
@@ -45,4 +45,30 @@ h2 {
 }
 hr {
   width: 400px;
+}
+
+@media only screen and (max-width: 600px) {
+  #lan-container {
+    background-size: cover;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100vh;
+  }
+
+  #lan-content-box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 90vw;
+    height: 60vh;
+    margin: 0;
+    text-align: center;
+  }
+
+  hr {
+    width: 80vw;
+  }
 }

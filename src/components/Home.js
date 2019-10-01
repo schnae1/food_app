@@ -38,7 +38,7 @@ class HomePage extends React.Component {
             offset = this.state.page;
         }
 
-
+        console.log("Hello!!");
         const resp = 
         await axios.get("https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search", {
             headers: {

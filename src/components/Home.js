@@ -128,7 +128,7 @@ const Restaurants = (props) => {
         const displayItems = restaurants.map((rest) =>
             <a key={rest.id} href={rest.url}>
                 <div className="rest-card">
-                    <h3>{rest['name']}</h3>
+                    <h3 id="rest-title">{rest['name']}</h3>
                     <div id="img-box">
                         <img className="card-img" src={rest['image_url']} alt="Restaurant Image" />
                     </div>
